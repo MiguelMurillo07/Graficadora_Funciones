@@ -1,0 +1,225 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOTOkCnF960+h6OIhyv3wNq",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/MiguelMurillo07/Graficadora_Funciones/blob/main/Continuaci%C3%B3n%20elifs\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Gráficas Matemáticas con Menú de Opciones.\n"
+      ],
+      "metadata": {
+        "id": "X9J3tOfwJ240"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "from cmath import sqrt"
+      ],
+      "metadata": {
+        "id": "kuuZeMxBPjgb"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"-----------------------------------\")\n",
+        "print(\"-------Graficadora Matemática------\")\n",
+        "print(\"-----------------------------------\")\n",
+        "\n",
+        "print(\"\\n Bienvenido al portal de Graficación de Funciones.\")\n",
+        "\n",
+        "# input\n",
+        "\n",
+        "print(\"\\n \\nDame la opción que deseas hacer para graficar: \\n\")\n",
+        "# Se despliega el menú para seleccionar la función a realizar:\n",
+        "print(\"1. Función Lineal.\")\n",
+        "print(\"2. Función Cuadrática.\")\n",
+        "print(\"3. Función Cúbica.\")\n",
+        "print(\"4. Función Exponencial.\")\n",
+        "print(\"5. Función Logaritmica.\")\n",
+        "print(\"6. Función Trigonométrica.\")\n",
+        "print(\"7. Función Valor Absoluto.\")\n",
+        "print(\"8. Función Radical.\")\n",
+        "\n",
+        "opc = int(input(\"Digita la opción que quieras graficar: \"))\n",
+        "\n",
+        "\n",
+        "# Processing\n",
+        "\n",
+        "\n",
+        "if opc == 1:\n",
+        "  n = 100\n",
+        "  def funcion_lineal(m , b , x):\n",
+        "    return m * x + b\n",
+        "\n",
+        "  # Input\n",
+        "  print(\"--------------------------\")\n",
+        "  print(\"------Función Lineal------\")\n",
+        "  print(\"--------y = mx + b--------\")\n",
+        "\n",
+        "  m = int(input(\"Digite el valor de la pendiente: \"))\n",
+        "  b = int(input(\"Digite el valor del punto de corte con el eje y: \"))\n",
+        "\n",
+        "  # Processing - Graphication\n",
+        "\n",
+        "  x = np.linspace(-10 , 10 , num=n)\n",
+        "  y = funcion_lineal(m , b , x)\n",
+        "\n",
+        "  plt.plot(x , y , color=\"r\")\n",
+        "  plt.xlabel(\"x\")\n",
+        "  plt.ylabel(\"y\")\n",
+        "  plt.title(\"Función Lineal: y = mx + b\")\n",
+        "  plt.grid()\n",
+        "  plt.axhline(y = 0, color=\"b\")\n",
+        "  plt.axvline(x = 0, color=\"b\")\n",
+        "  plt.show()\n",
+        "\n",
+        "elif opc == 2:\n",
+        "  n = 100\n",
+        "  def funcion_cuadratica(a, b ,c):\n",
+        "    return (-b+sqrt(b**2-(4*a*c)))/(2*a) and (-b-sqrt(b**2-(4*a*c)))/(2*a)\n",
+        "\n",
+        "  # Input\n",
+        "  print(\"------------------------------\")\n",
+        "  print(\"------Función Cuadrática------\")\n",
+        "  print(\"-------ax² + bx + c = 0-------\")\n",
+        "   \n",
+        "  a = int(input(\"Digita el valor del término cuadrático: \"))\n",
+        "  b = int(input(\"Digita el valor del término lineal: \"))\n",
+        "  c = int(input(\"Digita el valor del término independiente: \"))\n",
+        "  x1 = 0\n",
+        "  x2 = 0\n",
+        "\n",
+        "  # Processing - Graphication\n",
+        "  if ((b**2)-4*a*c) < 0:\n",
+        "    print(\"La solución final hace parte de los números complejos.\")\n",
+        "\n",
+        "  else:\n",
+        "    x1 = (-b+sqrt(b**2-(4*a*c)))/(2*a)\n",
+        "    x2 = (-b-sqrt(b**2-(4*a*c)))/(2*a)\n",
+        "\n",
+        "  x = np.linspace(-10, 10 , num=n) \n",
+        "  y = funcion_cuadratica(a, b, c)\n",
+        "\n",
+        "  plt.plot(x , y , color=\"r\")\n",
+        "  plt.xlabel(\"x\")\n",
+        "  plt.ylabel(\"y\")\n",
+        "  plt.title(\"Función Cuadrática: ax² + bx + c = 0\")\n",
+        "  plt.grid()\n",
+        "  plt.axhline(y = 0, color=\"b\")\n",
+        "  plt.axvline(x = 0, color=\"b\")\n",
+        "  plt.show()\n",
+        "\n",
+        "\n",
+        "elif opc == 3:\n",
+        "  # input\n",
+        "  print(\"---------------------------\")\n",
+        "  print(\"-------Función Cúbica------\")\n",
+        "  print(\"-----ax³ + bx² + c + d-----\")\n",
+        "\n",
+        "\n",
+        "elif opc == 4:\n",
+        "  # input\n",
+        "  print(\"---------------------------\")\n",
+        "  print(\"----Función Exponencial----\")\n",
+        "  print(\"-----f(x) = b-----\")\n",
+        "\n",
+        "\n",
+        "elif opc == 5:\n",
+        "  # input\n",
+        "  print(\"---------------------------\")\n",
+        "  print(\"-------Función Cúbica------\")\n",
+        "  print(\"-----ax3 + bx² + c + d-----\")\n",
+        "\n",
+        "\n",
+        "elif opc == 6:\n",
+        "  # input\n",
+        "  print(\"---------------------------\")\n",
+        "  print(\"-------Función Cúbica------\")\n",
+        "  print(\"-----ax3 + bx² + c + d-----\")\n",
+        "\n",
+        "\n",
+        "elif opc == 7:\n",
+        "  # input\n",
+        "  print(\"---------------------------\")\n",
+        "  print(\"-------Función Cúbica------\")\n",
+        "  print(\"-----ax3 + bx² + c + d-----\")\n",
+        "\n",
+        "elif opc == 8:\n",
+        "  # input\n",
+        "  print(\"---------------------------\")\n",
+        "  print(\"-------Función Cúbica------\")\n",
+        "  print(\"-----ax3 + bx² + c + d-----\")\n",
+        "\n",
+        "else:\n",
+        "  print(\"Opción no válida, por favor vuelva a intentarlo con los valores ya establecidos.\")\n"
+      ],
+      "metadata": {
+        "id": "H5IWvrROKnDj",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "e5c51326-35be-41a6-a261-e2d71df0cf3a"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "-----------------------------------\n",
+            "-------Graficadora Matemática------\n",
+            "-----------------------------------\n",
+            "\n",
+            " Bienvenido al portal de Graficación de Funciones.\n",
+            "\n",
+            " \n",
+            "Dame la opción que deseas hacer para graficar: \n",
+            "\n",
+            "1. Función Lineal.\n",
+            "2. Función Cuadrática.\n",
+            "3. Función Cúbica.\n",
+            "4. Función Exponencial.\n",
+            "5. Función Logaritmica.\n",
+            "6. Función Trigonométrica.\n",
+            "7. Función Valor Absoluto.\n",
+            "8. Función Radical.\n",
+            "Digita la opción que quieras graficar: 3\n",
+            "---------------------------\n",
+            "-------Función Cúbica------\n",
+            "-----ax3 + bx² + c + d-----\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
